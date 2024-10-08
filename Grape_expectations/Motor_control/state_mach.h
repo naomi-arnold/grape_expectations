@@ -1,6 +1,10 @@
 #ifndef _STATEMACH_H
 #define _STATEMACH_H
 
-void switchState(String state);
+// class state_mach {
+// public:
+  void switchState(String state, int addt);
+
+// };
 
 #endif _STATEMACH_H
