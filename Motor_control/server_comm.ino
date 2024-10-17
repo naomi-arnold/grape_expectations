@@ -48,11 +48,20 @@ void setup_server() {
   IPAddress ip = WiFi.localIP();
   Serial.print("IP Address: ");
   Serial.println(ip);
+
+  client.begin();
+  client.beginMessage(TYPE_TEXT);
+  client.print(clientID);
+  client.endMessage();
 }
 
 String get_message() {
     // check if a message is available to be received
     // TODO: check if team id is correct 
+    // Serial.println("in message\n");
+
+    if(!client.connected()) setup_server();
+    
     int messageSize = client.parseMessage();
     if (messageSize > 0) {
       Serial.println("Received a message:");
