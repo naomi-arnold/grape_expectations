@@ -1,4 +1,3 @@
-// #include "arduino_secrets.h"
 #include "server_comm.h"
 
 /*
@@ -32,10 +31,7 @@ int count = 0;
 
 void setup_server() {
   Serial.begin(9600);
-  while ( status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to Network named: ");
-    Serial.println(ssid);                   // print the network name (SSID);
-
+  while (status != WL_CONNECTED) {
     // Connect to WPA/WPA2 network:
     status = WiFi.begin(ssid, pass);
   }
@@ -53,65 +49,34 @@ void setup_server() {
   client.beginMessage(TYPE_TEXT);
   client.print(clientID);
   client.endMessage();
+
 }
 
-String get_message() {
-    // check if a message is available to be received
-    // TODO: check if team id is correct 
-    // Serial.println("in message\n");
+// Send message to server, used to send message to partner team
+// Input: Message to send 
+void send_message(String message) 
+{
+  if(!client.connected()) setup_server();
+  client.begin();
+  client.beginMessage(TYPE_TEXT);
+  client.print(message);
+  client.endMessage();
+}
 
+// Gets message from server
+// Return: message that client sent 
+String get_message() 
+{
     if(!client.connected()) setup_server();
     
     int messageSize = client.parseMessage();
     if (messageSize > 0) {
-      Serial.println("Received a message:");
-      Serial.println(client.readString());
       delay(10);
-
-      Serial.println("Received a message:");
-      Serial.println(client.readString());
-
       return client.readString();
     }
 
     return "";
  }
-
-// void read_message() {
-//   Serial.println("starting WebSocket client");
-//   client.begin();
-//   client.beginMessage(TYPE_TEXT);
-//   client.print(clientID);
-//   client.endMessage();
-
-//   while (client.connected()) {
-//     if (count > 6000) {
-//       count = 0;
-//     }
-//     if (count % 100 == 0) {
-//        Serial.print("Sending hello ");
-//       Serial.println(count);
-
-//       // send a hello #
-//       client.beginMessage(TYPE_TEXT);
-//       client.print("hello ");
-//       client.print(count);
-//       client.endMessage();
-//     }
-   
-//     // increment count for next message
-//     count++;
-
-//     // check if a message is available to be received
-//     int messageSize = client.parseMessage();
-//     if (messageSize > 0) {
-//       Serial.println("Received a message:");
-//       Serial.println(client.readString());
-//     }
-
-//     // wait 10ms
-//     delay(10);
-//   }
 
 
 

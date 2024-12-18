@@ -1,26 +1,20 @@
-// #include "arduino_secrets.h"
-
 #include "Motor_control.h"
 
 // Motor A connections
-const int enA = 3;  
 const int in1 = 5;
 const int in2 = 6;
  
 // Motor B connections
-const int enB = 11; 
 const int in3 = 9;
 const int in4 = 10;
  
 // Set the speed (0 = off and 255 = max speed)
-const int motorSpeed = 50;
-
+const int motorSpeed = 58;
 volatile int state = 0;
 
-void motor_setup() {
-  Serial.println("in motor setup");
-  pinMode(enA, OUTPUT);
-  pinMode(enB, OUTPUT);
+void motor_setup() 
+{
+
   pinMode(in1, OUTPUT);
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
@@ -31,86 +25,62 @@ void motor_setup() {
   digitalWrite(in2, LOW);
   digitalWrite(in3, LOW);
   digitalWrite(in4, LOW);
-  digitalWrite(enA, HIGH);
-  digitalWrite(enB, HIGH);
-
 }
  
-/*   
- *  Forwards, backwards, right, left, stop.
- */
-void go_forward(int dist) {
-  Serial.println("Forward");
-  int driveTime = dist * 10;
 
+void go_forward() 
+{
   analogWrite(in1, motorSpeed);
   digitalWrite(in2, LOW);
-  analogWrite(in3, motorSpeed);
+  analogWrite(in3, motorSpeed + 1);
   digitalWrite(in4, LOW);
-  
-  delay(driveTime);
-  stop_all();
 }
 
-void go_backwards(int dist) {
-  Serial.println("Backward");
-  int driveTime = dist * 10;
-
+void go_backwards() 
+{
   digitalWrite(in1, LOW);
-  analogWrite(in2, motorSpeed);
+  analogWrite(in2, motorSpeed );
   digitalWrite(in3, LOW);
   analogWrite(in4, motorSpeed);
-
-  delay(driveTime);
-  stop_all();
 }
 
-void go_right(int degrees) {
-  Serial.println("Right");
-  int pivotTime = degrees * 10;
-
-  analogWrite(in1, motorSpeed);
+void go_right() 
+{
+  analogWrite(in1, motorSpeed + 5);
   digitalWrite(in2, LOW);
   digitalWrite(in3, LOW);
   digitalWrite(in4, LOW);
-  
-  delay(pivotTime);
-  stop_all();
 }
-void go_left(int degrees) {
-  Serial.println("Left");
-  int pivotTime = degrees * 10;
 
+void go_left() 
+{
   digitalWrite(in1, LOW);
   digitalWrite(in2, LOW);
-  analogWrite(in3, motorSpeed);
+  analogWrite(in3, motorSpeed + 5);
   digitalWrite(in4, LOW);
-
-  delay(pivotTime);
-  stop_all();
 }
-void stop_all() {
-  Serial.println("Stop All");
 
+void stop_all() 
+{
   digitalWrite(in1, LOW);
   digitalWrite(in2, LOW);
   digitalWrite(in3, LOW);
   digitalWrite(in4, LOW);
 }
 
-void pivot_cw() {
-  Serial.println("Pivot CW");
-
-  analogWrite(in1, motorSpeed); 
+void pivot_cw() 
+{
+  analogWrite(in1, motorSpeed + 1); 
   digitalWrite(in2, LOW);
   digitalWrite(in3, LOW); 
-  analogWrite(in4, motorSpeed);
+  analogWrite(in4, motorSpeed + 1);
 }
 
-void pivot_ccw() {
-  Serial.println("Pivot CCW");
+void pivot_ccw() 
+{
   digitalWrite(in1, LOW); 
-  analogWrite(in2, motorSpeed);
-  analogWrite(in3, motorSpeed); 
+  analogWrite(in2, motorSpeed + 1);
+  analogWrite(in3, motorSpeed + 1); 
   digitalWrite(in4, LOW);
 }
+
