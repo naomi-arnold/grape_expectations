@@ -22,8 +22,13 @@ void setup()
 // Call desired bot navigation function 
 void loop()
 {
-  // bot1();
-  // bot2();
+  // Alow user to select which bot path to follow (1 or 2)
+  if (!handle_message2()) {
+    bot1();
+  } else {
+    bot2();
+  }
+
 }
 
 // Bot 1 naviagtion
@@ -208,6 +213,14 @@ bool handle_message2()
         if (strstr(inputString, "red lane found") != NULL) return true;
         if (strstr(inputString, "yellow lane found") != NULL) return true;
         if (strstr(inputString, "returned") != NULL) return true;
+      }
+
+      if (strstr(inputString, "89C87865077A") != NULL) {
+        if (strstr(inputString, "bot 1") != NULL) {
+          return 0;
+        } else if (strstr(inputString, "bot 2") != NULL) {
+          return 1;
+        }
       }
   }
   return false; 
