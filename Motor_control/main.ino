@@ -214,7 +214,7 @@ bool handle_message2()
         if (strstr(inputString, "yellow lane found") != NULL) return true;
         if (strstr(inputString, "returned") != NULL) return true;
       }
-
+      // Handle user bot number selection
       if (strstr(inputString, "89C87865077A") != NULL) {
         if (strstr(inputString, "bot 1") != NULL) {
           return 0;
