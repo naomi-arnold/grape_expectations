@@ -1,0 +1,14 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: purple; /* This will make all body text purple */
+}
+
+.text-center {
+  text-align: center;
+  color: purple; /* This ensures text in this class is purple */
+}
+
+.div-center {
+  display: flex;
+  align-items: center;
+}

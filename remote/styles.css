@@ -1,0 +1,117 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #e7baf1;
+  color: rgb(96, 0, 147);
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+/*connect */
+button { 
+  padding: 8px;
+  background-color: #aa1ff5;
+  color: white;
+  border: rgb(237, 10, 112);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+}
+
+.up, .down, .left, .right, .rotate-cw, .rotate-ccw {
+  padding: 15px;
+  background-color: #aa1ff5;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 24px;
+}
+
+.stop {
+  background-color: red;
+  color: white;
+}
+
+button:hover {
+  background-color: #4339cb;
+}
+
+button:active {
+  background-color: #2a1ce5;
+}
+
+input {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+/* Remote Controls Container */
+.remote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+/* Layout for the remote control buttons */
+.remote-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.horizontal-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 160px;
+  margin: 10px 0;
+}
+
+.up, .down {
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+}
+
+.left, .right {
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+}
+
+.rotate-cw, .rotate-ccw {
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+}
+
+.direction-label {
+  margin-top: 20px;
+}
+
+/* Message rendering */
+#messages p {
+  margin: 5px 0;
+  font-size: 14px;
+}
