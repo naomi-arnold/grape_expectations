@@ -8,7 +8,7 @@ String desired_lane = "blue";
 String desired_lane2 = "yellow";
 int message_state;
 
-// Always vcalled at the beginning 
+// Always called at the beginning 
 // Setup individual components including motors, color sensor, collision detection, and serial communication
 void setup() 
 {
